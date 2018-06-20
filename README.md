@@ -1,0 +1,1 @@
+# Sample full-stack application build with TypeScript
