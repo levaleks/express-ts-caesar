@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+
+      width: 400px;
+    }
+
+    .topic {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form__label {
+      margin-bottom: 15px;
+    }
+
+    .form__label:last-child {
+      margin-bottom: 0;
+    }
+
+    .form__label-name {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form__control {
+      display: block;
+      width: 100%;
+    }
+
+    .original-text, .result-text {
+      overflow-y: scroll;
+      height: 75px;
+      resize: none;
+    }
+  </style>
+  <title>Caesar Cipher</title>
+</head>
+<body>
+  <div id="app">
+    <div class="main">
+      <h1 class="topic">Caesar Demo</h1>
+    
+      <form class="form">
+        
+        <!-- Shift -->
+        <label class="form__label">
+          <span class="form__label-name">Shift</span>
+          
+          <select name="shift" class="form__control shift">
+            <script>
+              for (let i=1; i<27; i++) document.write(`<option value=${i}>${i}</option>`);
+            </script>
+          </select>
+        </label>   
+        <!-- /Shift -->
+        
+        <!-- Original text -->
+        <label class="form__label">
+          <span class="form__label-name">Original text</span>
+          
+          <textarea class="form__control original-text"></textarea>
+        </label>
+        <!-- /Original text -->    
+        
+        <!-- Result text -->
+        <label class="form__label">
+          <span class="form__label-name">Result text</span>
+          
+          <textarea class="form__control result-text"></textarea>
+        </label>
+        <!-- /Result text -->              
+      </form>
+    </div>
+  </div>
+
+  <script src="app.ts"></script>
+</body>
+</html>
