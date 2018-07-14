@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Request, Response, NextFunction } from 'express';
+import { Application, Request, Response, NextFunction, Errback } from 'express';
 import * as cors from 'cors';
 import caesarCipher from './src/caesarCipher';
 
@@ -12,7 +12,7 @@ interface ExpressError {
  * Constants
  */
 
-const app: express.Application = express();
+const app: Application = express();
 const PORT: number = Number(process.env.PORT) || 3000;
 
 /**
@@ -47,10 +47,10 @@ app.post('/transform', (req: Request, res: Response, next: NextFunction) => {
  * Error handler
  */
 
-app.use((err, req, res, next) => {
+app.use((err: ExpressError, req: Request, res: Response, next: NextFunction) => {
   console.error(err.message);
 
-  if (!err.statusCode) {
+  if (!err.status) {
     err.status = 500;
   }
 
