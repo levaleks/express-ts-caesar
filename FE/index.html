@@ -11,6 +11,26 @@
       padding: 0;
     }
 
+    @keyframes spinner {
+      to {transform: rotate(360deg);}
+    }
+
+    .spinner:before {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      margin-left: -10px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      border-top-color: #333;
+      animation: spinner .6s linear infinite;
+    }
+
     #app {
       height: 100vh;
       display: flex;
@@ -62,42 +82,7 @@
   <title>Caesar Cipher</title>
 </head>
 <body>
-  <div id="app">
-    <div class="main">
-      <h1 class="topic">Caesar Demo</h1>
-    
-      <form class="form">
-        
-        <!-- Shift -->
-        <label class="form__label">
-          <span class="form__label-name">Shift</span>
-          
-          <select name="shift" class="form__control shift">
-            <script>
-              for (let i=1; i<27; i++) document.write(`<option value=${i}>${i}</option>`);
-            </script>
-          </select>
-        </label>   
-        <!-- /Shift -->
-        
-        <!-- Original text -->
-        <label class="form__label">
-          <span class="form__label-name">Original text</span>
-          
-          <textarea class="form__control original-text"></textarea>
-        </label>
-        <!-- /Original text -->    
-        
-        <!-- Result text -->
-        <label class="form__label">
-          <span class="form__label-name">Result text</span>
-          
-          <textarea class="form__control result-text"></textarea>
-        </label>
-        <!-- /Result text -->              
-      </form>
-    </div>
-  </div>
+  <div id="app"></div>
 
   <script src="app.ts"></script>
 </body>

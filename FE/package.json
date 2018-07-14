@@ -1,17 +1,23 @@
 {
-  "name": "caesar-typescript",
+  "name": "js-camp-4-caesar-express",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "parcel index.html"
+    "serve": "concurrently \"npm run lint\" \"parcel index.html\"",
+    "lint": "nodemon -e ts --exec \"tslint --project . || exit 1\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "parcel-bundler": "^1.8.1",
+    "@babel/polyfill": "^7.0.0-beta.53",
+    "concurrently": "^3.6.0",
+    "nodemon": "^1.18.1",
+    "parcel-bundler": "^1.9.6",
+    "tslint": "^5.10.0",
+    "tslint-config-airbnb": "^5.9.2",
     "typescript": "^2.9.2"
   }
 }

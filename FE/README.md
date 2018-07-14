@@ -1,11 +1,18 @@
-### Legend
+# JS Camp #4 – Caesar/Express – Front-end
 
-- implement caesar function using TDD approach
-- when it's tested - adjust app.ts to make it work in the browser
-- try to imagine how would you Caesar algorithm look in the real world, decades ago
+Front-end part of the Caesar/Express application.
 
-### Up and going
+## Install
+
 ```
-npm run build
-npm run test
+# you must be inside js-camp-4-caesar-express project
+cd FE
+npm install
+```
+
+## Lint, Test & Start
+
+```
+npm run lint
+npm run serve
 ```
