@@ -1,0 +1,9 @@
+{
+  "extends": "tslint-config-airbnb",
+  "jsRules": {
+    "no-empty": true
+  },
+  "rules": {
+    "no-duplicate-imports": false
+  }
+}

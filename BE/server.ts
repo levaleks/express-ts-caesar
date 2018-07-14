@@ -1,31 +1,66 @@
 import * as express from 'express';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import * as cors from 'cors';
-import CaesarCipher from './src/caesar';
+import caesarCipher from './src/caesarCipher';
 
-// CONSTANTS
-const app = express();
-const PORT = 3001;
+interface ExpressError {
+  status?: number;
+  message: string;
+}
 
-// SETUP
+/**
+ * Constants
+ */
+
+const app: express.Application = express();
+const PORT: number = Number(process.env.PORT) || 3000;
+
+/**
+ * Setup
+ */
+
 app.use(cors());
+app.use(express.json());
 app.options('*', cors());
+
+/**
+ * Routes
+ */
+
+app.post('/transform', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    return res.json({ data: caesarCipher({ ...req.body }) });
+  } catch (error) {
+    if (error instanceof TypeError || error instanceof RangeError) {
+      const err: ExpressError = new Error(error.message);
+
+      err.status = 400;
+
+      return next(err);
+    }
+
+    return next(new Error('Internal Error'));
+  }
+});
+
+/**
+ * Error handler
+ */
+
+app.use((err, req, res, next) => {
+  console.error(err.message);
+
+  if (!err.statusCode) {
+    err.status = 500;
+  }
+
+  res.status(err.status).json({ status: err.status, message: err.message });
+});
+
+/**
+ * Ignition
+ */
+
 app.listen(PORT, () => {
-  console.log(`Server listening on http://localhost:${PORT}`)
+  console.log(`Server listening on http://localhost:${PORT}`);
 });
-
-// ROUTES
-
-app.get('/', (req: Request, res: Response) => {
-  res.send(`<a href="/hello/42?one=%20and%20two">example</a>`);
-});
-
-app.get('/hello/:id', (req: Request, res: Response) => {
-  res.send('Hello World! ' + req.params['id'] + req.query['one']);
-});
-
-app.get('/encode', (req: Request, res: Response) => {
-  const cipher = new CaesarCipher(+req.query.shift);
-  res.json({encoded: cipher.encode(req.query.text)});
-});
-
