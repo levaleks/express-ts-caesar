@@ -1,6 +1,6 @@
-# JS Camp #4 – Caesar/Express – Front-end
+# JS Camp #4 – Full-Stack Caesar – Front-end
 
-Front-end part of the Caesar/Express application.
+Front-end part of the Caesar cipher application.
 
 ## Install
 

@@ -1,11 +1,11 @@
-# JS Camp #4 – Caesar/Express
+# JS Camp #4 – Full-Stack Caesar
 
-Task – write an application which implements Caesar cipher using ExpressJS.
+Task – write simple Full-Stack JS application which implements Caesar cipher.
 
 ## Install
 
 ```
-git clone https://github.com/levaleks/js-camp-4-caesar-express.git
+git clone https://github.com/levaleks/js-camp-4-full-stack-caesar.git
 cd js-camp-4-caesar-express
 ```
 
